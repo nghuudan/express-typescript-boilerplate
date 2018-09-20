@@ -1,0 +1,49 @@
+{
+  "name": "express-typescript-boilerplate",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Boilerplate project for Node.js, Express and TypeScript",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && npm run lint && npm test && tsc -p tsconfig.prod.json",
+    "lint": "tslint src/**/*.ts",
+    "start": "ts-node index.ts",
+    "start:prod": "node ./dist",
+    "start:watch": "nodemon --watch **/*.ts --ignore **/*.spec.ts --exec ts-node index.ts",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nghuudan/express-typescript-boilerplate.git"
+  },
+  "keywords": [
+    "express",
+    "typescript",
+    "boilerplate"
+  ],
+  "author": "Dan Nguyen <nghuudan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nghuudan/express-typescript-boilerplate/issues"
+  },
+  "homepage": "https://github.com/nghuudan/express-typescript-boilerplate#readme",
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/jest": "^23.3.2",
+    "ajv": "^6.5.3",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "express": "^4.16.3",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.4",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "typescript": "^3.0.3"
+  }
+}
