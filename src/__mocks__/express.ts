@@ -1,4 +1,4 @@
-const requestHandler = (path: string, func: Function) => func({}, {
+const requestHandler = (path: string, func: Function) => func({ params: {} }, {
   json: jest.fn(),
   send: jest.fn(),
   sendStatus: jest.fn(),

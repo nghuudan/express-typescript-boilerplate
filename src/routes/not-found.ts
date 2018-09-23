@@ -1,3 +1,3 @@
 import { Request, Response } from 'express';
 
-export default (req: Request, res: Response) => res.sendStatus(404);
+export default (_: Request, res: Response) => res.sendStatus(404);
