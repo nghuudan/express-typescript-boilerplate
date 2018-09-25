@@ -7,6 +7,7 @@ import { logger } from './util';
 
 export default async () => {
   const app = express();
+
   app.use(bodyParser.json());
   app.use(helmet());
   app.use(routes);

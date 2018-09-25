@@ -7,10 +7,10 @@ export const getTodoById = (id: number) => Todo.findOne({
   where: { id },
 });
 
-export const createTodo = (dto: TodoAttributes) => Todo.create({
-  title: dto.title,
-  description: dto.description,
-  completed: Boolean(dto.completed),
+export const createTodo = (attrs: TodoAttributes) => Todo.create({
+  title: attrs.title,
+  description: attrs.description,
+  completed: Boolean(attrs.completed),
 }).then((todo: TodoInstance) => todo.get());
 
 export const deleteTodo = (id: number) => Todo.findOne({
@@ -19,19 +19,21 @@ export const deleteTodo = (id: number) => Todo.findOne({
   return todo ? todo.destroy().then(() => todo) : null;
 });
 
-export const updateTodo = (id: number, dto: TodoAttributes) => {
-  const defaults = {
-    title: dto.title,
-    description: dto.description,
-    completed: Boolean(dto.completed),
-  };
+export const updateTodo = (id: number, attrs: TodoAttributes) => {
+  const { title, description, completed } = attrs;
+
   return Todo.findOrCreate({
-    defaults,
+    defaults: { title, description, completed },
     where: { id },
   }).spread((todo: TodoInstance|boolean): any => {
-    if (todo === true || todo === false) {
-      return todo;
-    }
-    return todo.update(defaults).then(() => todo);
+    if (todo === true || todo === false) return todo;
+
+    const merged = {
+      title: title || todo.get('title'),
+      description: description || todo.get('description'),
+      completed: completed || todo.get('completed'),
+    };
+
+    return todo.update(merged).then(() => todo);
   });
 };
