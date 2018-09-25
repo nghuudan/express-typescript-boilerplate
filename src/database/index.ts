@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+import { TodoAttributes, TodoInstance } from '../interfaces/todo.interfaces';
 
 const sequelize = new Sequelize('test', 'root', 'test', {
   host: 'localhost',
@@ -12,6 +13,6 @@ const sequelize = new Sequelize('test', 'root', 'test', {
   },
 });
 
-export const Todo = sequelize.import('./todo');
+export const Todo = sequelize.import<TodoInstance, TodoAttributes>('./todo.model');
 
 export default sequelize;

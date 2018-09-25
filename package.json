@@ -33,7 +33,7 @@
     "@types/express": "^4.16.0",
     "@types/helmet": "0.0.41",
     "@types/jest": "^23.3.2",
-    "@types/sequelize": "^4.27.25",
+    "@types/sequelize": "^4.27.26",
     "ajv": "^6.5.4",
     "eslint": "^5.6.0",
     "eslint-config-airbnb-base": "^13.1.0",

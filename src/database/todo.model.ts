@@ -1,6 +1,10 @@
 import { Sequelize, DataTypes } from 'sequelize';
+import { TodoAttributes, TodoInstance } from '../interfaces/todo.interfaces';
 
-export default (sequelize: Sequelize, dataTypes: DataTypes) => sequelize.define('todo', {
+export default (
+  sequelize: Sequelize,
+  dataTypes: DataTypes,
+) => sequelize.define<TodoInstance, TodoAttributes>('todo', {
   title: {
     allowNull: false,
     defaultValue: '',
